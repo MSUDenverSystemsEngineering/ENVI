@@ -1,0 +1,1 @@
+http://vmwas22.winad.msudenver.edu:7070/fne/bin/capability
