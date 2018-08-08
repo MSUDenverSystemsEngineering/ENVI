@@ -33,6 +33,8 @@
 	http://psappdeploytoolkit.com
 #>
 [CmdletBinding()]
+## Suppress PSScriptAnalyzer errors for not using declared variables during AppVeyor build
+[Diagnostics.CodeAnalysis.SuppressMessageAttribute("PSUseDeclaredVarsMoreThanAssignments", "", Justification="Suppresses AppVeyor errors on informational variables below")]
 Param (
 	[Parameter(Mandatory=$false)]
 	[ValidateSet('Install','Uninstall')]
@@ -50,7 +52,7 @@ Param (
 
 Try {
 	## Set the script execution policy for this process
-	Try { Set-ExecutionPolicy -ExecutionPolicy 'ByPass' -Scope 'Process' -Force -ErrorAction 'Stop' } Catch {Write-Error -Message "Unable to set the PowerShell Execution Policy to Bypass for this process."}
+	Try { Set-ExecutionPolicy -ExecutionPolicy 'ByPass' -Scope 'Process' -Force -ErrorAction 'Stop' } Catch { Write-Error "Failed to set the execution policy to Bypass for this process." }
 	
 	##*===============================================
 	##* VARIABLE DECLARATION
@@ -58,7 +60,7 @@ Try {
 	## Variables: Application
 	[string]$appVendor = 'Harris'
 	[string]$appName = 'ENVI'
-	[string]$appVersion = '5.4.1'
+	[string]$appVersion = '5.5'
 	[string]$appArch = 'x64'
 	[string]$appLang = 'EN'
 	[string]$appRevision = '01'
@@ -132,7 +134,7 @@ Try {
 		}
 		
 		## <Perform Installation tasks here>
-		$exitCode = Execute-Process -Path "$dirFiles\envi541-win.exe" -Parameters "/LOADINF=`"$dirSupportFiles\ENVI_only.ini`" /SP /VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /NORESTART /FORCECLOSEAPPLICATIONS" -WindowStyle "Hidden" -PassThru
+		$exitCode = Execute-Process -Path "$dirFiles\envi55-win.exe" -Parameters "/LOADINF=`"$dirSupportFiles\ENVI_only.ini`" /SP /VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /NORESTART /FORCECLOSEAPPLICATIONS" -WindowStyle "Hidden" -PassThru
         If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 		
 		##*===============================================
