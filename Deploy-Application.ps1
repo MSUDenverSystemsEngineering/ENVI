@@ -74,7 +74,7 @@ Try {
 
 	##* Do not modify section below
 	#region DoNotModify
-	
+
 	## Variables: Exit Code
 	[int32]$mainExitCode = 0
 
