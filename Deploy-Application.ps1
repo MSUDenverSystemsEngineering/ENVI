@@ -185,7 +185,7 @@ Try {
 		}
 
 		# <Perform Uninstallation tasks here>
-		$exitCode = Execute-Process -Path "$envProgramFiles\Harris\ENVI54\uninsENVI541\unins000.exe" -Parameters "/VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /FORCECLOSEAPPLICATIONS" -WindowStyle "Hidden" -PassThru
+		$exitCode = Execute-Process -Path "$envProgramFiles\Harris\ENVI56\uninsENVI56\unins000.exe" -Parameters "/VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /FORCECLOSEAPPLICATIONS" -WindowStyle "Hidden" -PassThru
         If (($exitCode.ExitCode -ne "0") -and ($mainExitCode -ne "3010")) { $mainExitCode = $exitCode.ExitCode }
 
 
