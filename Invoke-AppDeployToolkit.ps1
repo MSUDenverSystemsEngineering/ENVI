@@ -95,7 +95,7 @@ $adtSession = @{
     # App variables.
     AppVendor = 'NV5'
     AppName = 'ENVI'
-    AppVersion = ''
+    AppVersion = '6.2'
     AppArch = ''
     AppLang = ''
     AppRevision = ''
@@ -152,7 +152,7 @@ function Install-ADTDeployment
     }
 
     ## <Perform Installation tasks here>
-    Start-ADTProcess -FilePath "envi61-win.exe" -ArgumentList "/LOADINF=`"$($adtSession.DirSupportFiles)\ENVI_only.ini`" /SP /VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /NORESTART /FORCECLOSEAPPLICATIONS"
+    Start-ADTProcess -FilePath "envi62-win.exe" -ArgumentList "/LOADINF=`"$($adtSession.DirSupportFiles)\ENVI_only.ini`" /SP /VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /NORESTART /FORCECLOSEAPPLICATIONS"
 
     ##================================================
     ## MARK: Post-Install
@@ -201,7 +201,7 @@ function Uninstall-ADTDeployment
     }
 
     ## <Perform Uninstallation tasks here>
-    Start-ADTProcess -FilePath "C:\Program Files\NV5\ENVI61\uninsENVI61\unins000.exe" -ArgumentList "/VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /FORCECLOSEAPPLICATIONS"
+    Start-ADTProcess -FilePath "C:\Program Files\NV5\ENVI62\uninsENVI62\unins000.exe" -ArgumentList "/VERYSILENT /SUPPRESSMSGBOXES /NOCANCEL /FORCECLOSEAPPLICATIONS"
 
     ##================================================
     ## MARK: Post-Uninstallation
